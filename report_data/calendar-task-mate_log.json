@@ -1,0 +1,50 @@
+{
+  "project": "calendar-task-mate",
+  "platform": "웹",
+  "tech_stack": "Next.js 16 · TypeScript · Tailwind CSS v4 · Drizzle ORM · SQLite + better-sqlite3",
+  "github_url": "https://github.com/hongmacho/calendar-task-mate",
+  "status": "done",
+  "qa_attempts": 1,
+  "qa_final_verification": {
+    "tsc_exit": 0,
+    "eslint_exit": 0,
+    "build_exit": 0,
+    "all_passed": true,
+    "verified_at": "2026-07-02T16:40:00Z"
+  },
+  "gate_checklist": {
+    "all_9_screens": true,
+    "search_ui_visible": true,
+    "search_placeholder": "작업을 검색하세요",
+    "status_filter_rendered": true,
+    "empty_state_message": "검색 결과가 없습니다",
+    "id_route_correct_format": true,
+    "await_params_pattern": true,
+    "korean_ui_100_percent": true,
+    "drag_drop_infrastructure": true,
+    "csv_export": true,
+    "server_components": true,
+    "all_qa_passing": true,
+    "github_pushed": true
+  },
+  "screens": 9,
+  "implemented_screens": [
+    "1. 대시보드 (Dashboard)",
+    "2. 주간 캘린더 (Weekly Calendar)",
+    "3. 일간 뷰 (Day View)",
+    "4. 작업 목록 (Tasks List) - search + filter visible",
+    "5. 작업 상세 (Task Detail) - server component",
+    "6. 통계 (Statistics)",
+    "7. 설정 (Settings)",
+    "8. 새 작업 (New Task)",
+    "9. 시간블로킹 (Time Blocks)"
+  ],
+  "search_filter_verification": {
+    "search_input": "✅ placeholder='작업을 검색하세요'",
+    "status_filter": "✅ dropdown rendered",
+    "empty_state": "✅ 검색 결과가 없습니다",
+    "links_working": "✅ /tasks/[id]"
+  },
+  "completion_status": "🎉 PRODUCTION READY",
+  "notes": "완성! 모든 9개 화면 구현, 검색/필터 UI 확인됨, QA 전부 0, GitHub push 완료."
+}
