@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Navigation } from "@/components/Navigation";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+        <Navigation />
+        <main className="pt-16">{children}</main>
+      </body>
     </html>
   );
 }

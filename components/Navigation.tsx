@@ -7,12 +7,15 @@ export function Navigation() {
         <Link href="/" className="text-xl font-bold">
           📅 CalendarTaskMate
         </Link>
-        <div className="flex gap-6">
+        <div className="flex gap-6 text-sm">
           <Link href="/calendar" className="hover:text-blue-600">
             캘린더
           </Link>
           <Link href="/tasks" className="hover:text-blue-600">
             작업
+          </Link>
+          <Link href="/time-blocks" className="hover:text-blue-600">
+            시간블로킹
           </Link>
           <Link href="/stats" className="hover:text-blue-600">
             통계
