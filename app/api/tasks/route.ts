@@ -1,11 +1,15 @@
+import { taskRepository } from "@/src/repositories/task.repository";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    const tasks = [
-      { id: 1, title: "프로젝트 A - 기획", status: "unassigned", hours: 2 },
-      { id: 2, title: "프로젝트 B - 개발", status: "in_progress", hours: 3 },
-    ];
+    const { searchParams } = new URL(req.url);
+    const status = searchParams.get("status");
+
+    const tasks = status
+      ? await taskRepository.findByStatus(status)
+      : await taskRepository.findAll();
+
     return NextResponse.json({ success: true, data: tasks });
   } catch (error) {
     return NextResponse.json(
@@ -18,13 +22,19 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    return NextResponse.json(
-      { success: true, data: { id: Date.now(), ...body } },
-      { status: 201 }
-    );
+
+    if (!body.title) {
+      return NextResponse.json(
+        { success: false, error: "제목은 필수입니다" },
+        { status: 400 }
+      );
+    }
+
+    const task = await taskRepository.create(body);
+    return NextResponse.json({ success: true, data: task }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
-      { success: false, error: "Failed to create task" },
+      { success: false, error: "작업 생성 실패" },
       { status: 400 }
     );
   }
