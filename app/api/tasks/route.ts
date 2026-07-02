@@ -7,7 +7,9 @@ export async function GET(req: NextRequest) {
     const status = searchParams.get("status");
 
     const tasks = status
-      ? await taskRepository.findByStatus(status)
+      ? await taskRepository.findByStatus(
+          status as "unassigned" | "assigned" | "in_progress" | "completed"
+        )
       : await taskRepository.findAll();
 
     return NextResponse.json({ success: true, data: tasks });

@@ -33,7 +33,7 @@ export class TaskRepository {
     return await db.select().from(tasks).orderBy(desc(tasks.createdAt));
   }
 
-  async findByStatus(status: string) {
+  async findByStatus(status: "unassigned" | "assigned" | "in_progress" | "completed") {
     return await db
       .select()
       .from(tasks)
